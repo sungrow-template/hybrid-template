@@ -1,0 +1,6 @@
+@import './variables.scss';
+// 覆盖一些element-ui样式
+.el-pagination{
+  text-align: right;
+  margin-top: 10px;
+}

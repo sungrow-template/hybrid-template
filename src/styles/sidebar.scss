@@ -1,0 +1,54 @@
+@import '@/styles/variables.scss';
+
+.side-bar{
+    width: 180px;
+    .el-menu {
+        height: 100%;
+        width: 100% !important;
+        background-color: rgb(42, 42, 42);
+        position: relative;
+        margin: 0;
+        padding-left: 0;
+    }
+    .el-menu-item {
+        width: 100%;
+        padding-left: 18px;
+        border-left: 2px solid #2A2A2A;
+        color: rgb(191, 191, 191);
+        margin-right: 16px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-size: 16px;
+        user-select: none;
+        i{
+            font-size: 20px;
+        }
+        &.is-active{
+            border-left: 2px solid $theme-color;
+            color: $theme-color;
+        }
+        &:hover {
+            background-color: rgb(34,34,34);
+        }
+        &:focus{
+            background-color:rgb(42, 42, 42);
+        }
+    }
+    .el-submenu{
+        .el-submenu__title{
+            color: rgb(191, 191, 191);
+            &:hover {
+                background-color: rgb(34,34,34);
+            }
+            &:focus{
+                background-color:rgb(42, 42, 42);
+            }
+        }
+        .el-menu-item{
+            padding: 0;
+            padding-left: 51px !important;
+            min-width: 100%;
+        }
+    }
+}
+

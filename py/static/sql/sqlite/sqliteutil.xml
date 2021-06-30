@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sql>
+    <select id="select_db_table">
+        select name from sqlite_master where type = 'table'
+    </select>
+
+    <select id="select_db_version">
+        select value from sys_config where code = 'db_version'
+    </select>
+
+    <select id="select_table_column">
+        PRAGMA table_info(${same_table})
+    </select>
+
+    <select id="select_table_data">
+        select
+        <foreach item="item" collection="columns" separator=",">
+                "${item}"
+        </foreach>
+        from ${table_name}
+    </select>
+
+    <select id="select_source_data">
+        select id from ${table_name} where id=#{id}
+    </select>
+
+    <insert id="insert_dist_data">
+        insert into ${table_name}
+        <foreach item="item" collection="columns" open="(" close=")" separator=",">
+                "${item}"
+        </foreach>
+        values
+        <foreach item="item" collection="columns" open="(" close=")" separator=",">
+                #{data[item]}
+        </foreach>
+    </insert>
+
+    <update id="update_version">
+        update sys_config set value=#{value} where code='db_version'
+    </update>
+</sql>
